@@ -29,7 +29,11 @@ router.post("/signup", async (req, res) => {
     const token = user.createToken();
     console.log(token);
 
-    res.status(201).cookie("token", token, options).json({
+    res.status(201).cookie("token", token, options).header({
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Credentials": true,
+        "Access-Control-Allow-Methods": "POST",
+      }).json({
       success: true,
       messege: "Registerd Successfully!",
     });
