@@ -9,7 +9,7 @@ dotenv.config();
 const app = express();
 app.use(
   cors({
-     origin: ["http://localhost:3000", "http://localhost:5000"],
+     origin: ["https://registratin-i2td.vercel.app", "http://localhost:5000"],
       methods: "POST,GET,PUT",
       credentials: true,
   })
