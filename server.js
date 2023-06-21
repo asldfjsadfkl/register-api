@@ -7,6 +7,14 @@ import dotenv from "dotenv";
 
 dotenv.config();
 const app = express();
+app.use(
+  cors({
+     origin: ["http://localhost:3000", "http://localhost:5000"],
+      methods: "POST,GET,PUT",
+      credentials: true,
+  })
+);
+
 // body_parser
 app.use(bodyParser.json());
 app.use(bodyParser.json({ type: "application/*+json," * "" }));
@@ -15,24 +23,6 @@ app.use(express.json());
 app.use(router);
 // db connection
 conn();
-
-app.use(
-  cors({
-    Origin: "http://localhost:5000/",
-    methods: "POST,GET,PUT",
-    credentials: true,
-  })
-);
-
-
-
-
-
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
 
 const PORT = process.env.PORT || 5000;
 
