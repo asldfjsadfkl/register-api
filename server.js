@@ -14,11 +14,6 @@ app.use(
       credentials: true,
   })
 );
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "https://registratin-i2td.vercel.app");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
 
 // body_parser
 app.use(bodyParser.json());
