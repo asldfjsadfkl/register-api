@@ -22,6 +22,7 @@ app.use(function(req, res, next) {
 
 // body_parser
 app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: true }))
 app.use(bodyParser.json({ type: "application/*+json," * "" }));
 app.use(express.json());
 // use router
