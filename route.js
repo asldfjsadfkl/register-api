@@ -29,7 +29,7 @@ router.post("/register", async (req, res) => {
     const token = user.createToken();
     console.log(token);
 
-    res.status(201).cookie("token", token, options).header({
+    res.status(201).cookie("token", token, options).setheader({
         "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Credentials": true,
         "Access-Control-Allow-Methods": "POST",
