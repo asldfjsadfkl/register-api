@@ -10,12 +10,7 @@ router.post("/signup", async (req, res) => {
   console.log(req.body);
 
   try {
-    if (!name || !phone || !email || !password) {
-      res.status(404).json({
-        success: false,
-        message: "Invalid Data!",
-      });
-    }
+    
     const options = {
       expires: new Date(Date.now() + 4 * 24 * 60 * 60 * 1000),
       httpOnly: true,
