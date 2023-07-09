@@ -28,6 +28,7 @@ router.post("/signup", async (req, res) => {
     console.log(token);
     res.status(201).cookie("token", token, options).json({
       success: true,
+      token,
       messege: "Registerd Successfully!",
     });
   } catch (error) {
@@ -58,6 +59,7 @@ router.post("/login", async (req, res) => {
     };
     res.status(200).cookie("token", token, options).json({
       success: true,
+      token,
       messege: "Login Successfully!",
     });
   } catch (error) {
