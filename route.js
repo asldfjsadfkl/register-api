@@ -1,12 +1,12 @@
 import express from "express";
 import Schema from "./Database/schema.js";
-
+const app = express();
 const router = express.Router();
 
 // signup router is here
-
-router.post("/signup", async (req, res) => {
+router.post("/register", async (req, res) => {
   const { name, phone, email, password } = req.body;
+  console.log(req.body);
 
   try {
     if (!name || !phone || !email || !password) {
@@ -18,22 +18,24 @@ router.post("/signup", async (req, res) => {
     const options = {
       expires: new Date(Date.now() + 4 * 24 * 60 * 60 * 1000),
       httpOnly: true,
+      secure: true,
+      samSite: "none",
     };
+
     const user = await Schema.create({
       name,
       phone,
       email,
       password,
     });
-
     const token = user.createToken();
     console.log(token);
-
     res.status(201).cookie("token", token, options).json({
       success: true,
       messege: "Registerd Successfully!",
     });
   } catch (error) {
+    res.status(500);
     console.log(error);
   }
 });
@@ -41,10 +43,8 @@ router.post("/signup", async (req, res) => {
 // signin router is here
 router.post("/login", async (req, res) => {
   const { email, password } = req.body;
+  console.log(req.body);
   try {
-    if (!email || !password) {
-      res.status(402).json({ message: "Invalid Data" });
-    }
     const user = await Schema.findOne(req.email);
     if (!user) {
       res.status(402).json({ message: "Incorrect Password or email!" });
@@ -57,8 +57,10 @@ router.post("/login", async (req, res) => {
     const options = {
       expires: new Date(Date.now() + 4 * 24 * 60 * 60 * 1000),
       httpOnly: true,
+      secure: true,
+      samSite: "none",
     };
-    res.status(201).cookie("token", token, options).json({
+    res.status(200).cookie("token", token, options).json({
       success: true,
       messege: "Login Successfully!",
     });

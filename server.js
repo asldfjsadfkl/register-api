@@ -4,35 +4,26 @@ import cors from "cors";
 import bodyParser from "body-parser";
 import { conn } from "./Database/Db.js";
 import dotenv from "dotenv";
-
-dotenv.config();
+import cookieParser from "cookie-parser";
 const app = express();
-// body_parser
-app.use(bodyParser.json());
-app.use(bodyParser.json({ type: "application/*+json," * "" }));
-app.use(express.json());
-// use router
-app.use(router);
-// db connection
-conn();
 
 app.use(
   cors({
-    Origin: "http://localhost:5000/",
-    methods: "POST,GET,PUT",
+    origin: "https://client-umber-iota.vercel.app",
     credentials: true,
   })
 );
-
-
-
-
-
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
+dotenv.config();
+// body_parsersss
+app.use(bodyParser.json());
+app.use(cookieParser());
+app.use(express.urlencoded({ extended: true }));
+app.use(bodyParser.json({ type: "application/*+json," * "" }));
+app.use(express.json());
+// db connection
+conn();
+// use router
+app.use(router);
 
 const PORT = process.env.PORT || 5000;
 
