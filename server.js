@@ -11,7 +11,7 @@ dotenv.config();
 
 app.use(
   cors({
-    origin: "http://localhost:5000",
+    origin: "https://client-umber-iota.vercel.app",
     credentials: true,
   })
 );
