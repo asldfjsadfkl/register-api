@@ -9,8 +9,8 @@ dotenv.config();
 const app = express();
 app.use(
   cors({
-    origin:"*",
-     origin: "https://register-api-nine.vercel.app",
+    origin:"https://client-umber-iota.vercel.app",
+     // origin: "https://register-api-nine.vercel.app",
       credentials: true,
   })
 );
