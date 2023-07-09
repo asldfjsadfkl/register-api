@@ -4,7 +4,8 @@ const app = express();
 const router = express.Router();
 
 // signup router is here
-router.post("/register", async (req, res) => {
+
+router.post("/signup", async (req, res) => {
   const { name, phone, email, password } = req.body;
   console.log(req.body);
 
@@ -18,8 +19,6 @@ router.post("/register", async (req, res) => {
     const options = {
       expires: new Date(Date.now() + 4 * 24 * 60 * 60 * 1000),
       httpOnly: true,
-      secure: true,
-      samSite: "none",
     };
 
     const user = await Schema.create({
@@ -57,8 +56,6 @@ router.post("/login", async (req, res) => {
     const options = {
       expires: new Date(Date.now() + 4 * 24 * 60 * 60 * 1000),
       httpOnly: true,
-      secure: true,
-      samSite: "none",
     };
     res.status(200).cookie("token", token, options).json({
       success: true,
