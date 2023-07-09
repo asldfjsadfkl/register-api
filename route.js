@@ -18,7 +18,7 @@ router.post("/register", async (req, res) => {
     const options = {
       expires: new Date(Date.now() + 4 * 24 * 60 * 60 * 1000),
       httpOnly: true,
-      sameSite: 'Lax',
+      sameSite: 'Strict',
       secure: true
     };
     const user = await Schema.create({
