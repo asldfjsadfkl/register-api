@@ -8,13 +8,13 @@ import dotenv from "dotenv";
 dotenv.config();
 const app = express();
 app.use(cors());
-app.use(
-  cors({
-     origin: ["https://registratin-i2td.vercel.app", "https://register-api-nine.vercel.app"],
-      methods: "POST,GET,PUT",
-      credentials: true,
-  })
-);
+// app.use(
+//   cors({
+//      origin: ["https://registratin-i2td.vercel.app", "https://register-api-nine.vercel.app"],
+//       methods: "POST,GET,PUT",
+//       credentials: true,
+//   })
+// );
 
 // body_parser
 app.use(bodyParser.json());
@@ -28,6 +28,5 @@ conn();
 
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT,cors(), (req, res) => {
-  console.log(PORT);
+app.listen(PORT, (req, res) => {
 });
