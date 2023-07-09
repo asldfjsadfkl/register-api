@@ -18,6 +18,7 @@ router.post("/register", async (req, res) => {
     const options = {
       expires: new Date(Date.now() + 4 * 24 * 60 * 60 * 1000),
       httpOnly: true,
+       sameSite: "none",
     };
     const user = await Schema.create({
       name,
@@ -57,6 +58,7 @@ router.post("/login", async (req, res) => {
     const options = {
       expires: new Date(Date.now() + 4 * 24 * 60 * 60 * 1000),
       httpOnly: true,
+       sameSite: "none",
     };
     res.status(201).cookie("token", token, options).json({
       success: true,
