@@ -9,7 +9,8 @@ dotenv.config();
 const app = express();
 app.use(
   cors({
-     origin: "https://register-api-nine.vercel.app/",
+    origin:"*",
+     origin: "https://register-api-nine.vercel.app",
       credentials: true,
   })
 );
