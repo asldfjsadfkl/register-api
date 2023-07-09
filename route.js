@@ -59,7 +59,8 @@ router.post("/login", async (req, res) => {
     const options = {
       expires: new Date(Date.now() + 4 * 24 * 60 * 60 * 1000),
       httpOnly: true,
-       sameSite: "none",
+      sameSite: 'none',
+      secure: true
     };
     res.status(201).cookie("token", token, options).json({
       success: true,
