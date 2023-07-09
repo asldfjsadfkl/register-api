@@ -7,14 +7,12 @@ import dotenv from "dotenv";
 
 dotenv.config();
 const app = express();
-app.use(cors());
-// app.use(
-//   cors({
-//      origin: ["https://registratin-i2td.vercel.app", "https://register-api-nine.vercel.app"],
-//       methods: "POST,GET,PUT",
-//       credentials: true,
-//   })
-// );
+app.use(
+  cors({
+     origin: "https://register-api-nine.vercel.app",
+      credentials: true,
+  })
+);
 
 // body_parser
 app.use(bodyParser.json());
