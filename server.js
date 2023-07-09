@@ -7,8 +7,7 @@ import dotenv from "dotenv";
 
 dotenv.config();
 const app = express();
-app.use(cors());
-app.use(
+app.use("*",
   cors({
      origin: ["https://registratin-i2td.vercel.app", "https://register-api-nine.vercel.app"],
       methods: "POST,GET,PUT",
@@ -28,6 +27,6 @@ conn();
 
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT,cors(), (req, res) => {
+app.listen(PORT, (req, res) => {
   console.log(PORT);
 });
